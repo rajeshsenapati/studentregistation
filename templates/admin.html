@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>student deatels</title>
+    <link rel="stylesheet" href="{% static 'mystyle/mystyle.css' %}">
+</head>
+<body>
+<table class="table table-dark table-hover style">
+  <thead>
+  <tr class="">
+      <th>Sl</th>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Photo</th>
+      <th>Email</th>
+      <th>DOR</th>
+      <th>Update</th>
+      <th>Delete</th>
+  </tr>
+  {% for student in data %}
+      <tr class="">
+      <th>{{ student.number }}</th>
+      <th>{{ student.name }}</th>
+      <th>{{ student.contact }}</th>
+      <th><img src="{{ student.photo.url }}" height="100" width="100"></th>
+      <th>{{ student.email }}</th>
+      <th>{{ student.date_of_regi }}</th>
+      <th>
+          <a href="{% url 'update_data' student.number%}">
+              Edit
+          </a>
+      </th>
+      <th>
+          <a href="{% url 'delete_data' student.number%}">
+              <img src="{% static 'images/delete.png' %}" height="30" width="30">
+          </a>
+      </th>
+      </tr>
+  {% endfor %}
+  </thead>
+</table>
+</body>
+</html>

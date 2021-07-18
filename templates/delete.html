@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+<table align="center" border="2">
+    <form action="{% url 'delete_data' data.number %}" method="post">
+        {% csrf_token %}
+    <tr colspan="2">
+        <th>Student Information</th>
+    </tr>
+    <tr colspan="6">
+        <th>
+            <img src="{{ data.photo.url }}" height="250" width="250">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            {{ data.number }}
+        </th>
+    </tr>
+    <tr>
+        <th>
+            {{ data.name }}
+        </th>
+    </tr>
+    <tr>
+        <th>
+            {{ data.contact }}
+        </th>
+    </tr>
+    <tr>
+        <th>
+            {{ data.email }}
+        </th>
+    </tr>
+    <tr>
+        <th>
+            {{ data.date_of_regi }}
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <button type="submit" class="btn-danger">Delete</button>
+        </th>
+    </tr>
+    </form>
+    <tr>
+        <th>
+            <form action="{% url 'view_all' %}">
+            <button type="submit" class="btn-primary">Cancel</button>
+            </form>
+        </th>
+    </tr>
+</table>
+</body>
+</html>

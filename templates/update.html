@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Page</title>
+</head>
+<body>
+<table align="center" border="2">
+    <thead>Student Details</thead>
+    <form method="post" action="{% url 'update_data' student_data.number%}" enctype="multipart/form-data">
+        {% csrf_token %}
+    <tr>
+        <th>
+            {% if student_data.photo %}
+                <img src='{{ student_data.photo.url }}' height='250' width='250' alt="photo here">
+            {% endif %}
+            <input type="file" name="photo">
+        </th>
+    </tr>
+    <tr>
+        <th><input type="tel" value="{{ student_data.number }}" readonly></th>
+    </tr>
+    <tr>
+        <th>
+            <input type="text" name="name" value="{{ student_data.name }}">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="tel" name="contact" value="{{ student_data.contact }}">
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input type="email" name="email" value="{{ student_data.email }}">
+        </th>
+    </tr>
+    <tr>
+        <th><input value="{{ student_data.date_of_regi }}"></th>
+    </tr>
+    <tr>
+        <th>
+            <button type="submit">Save</button>
+        </th>
+    </tr>
+    </form>
+    <tr>
+        <th>
+            <form action="{% url 'view_all' %}">
+            <button type="submit">Cancel</button>
+            </form>
+        </th>
+    </tr>
+</table>
+</body>
+</html>
